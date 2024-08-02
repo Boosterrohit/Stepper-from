@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submitted Data</title>
+    <link rel="stylesheet" href="ProfileInfo.css" />
+  </head>
+  <body>
+    <main class="submitted-data">
+      <h1>Profile Data</h1>
+      <div class="image-container">
+        <img id="submitted-image" alt="Submitted Image" />
+      </div>
+      <div id="data-container"></div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dataContainer = document.getElementById("data-container");
+        const submittedImage = document.getElementById("submitted-image");
+
+        // Retrieve the data from localStorage
+        const formData = JSON.parse(localStorage.getItem("formData"));
+        const formImage = localStorage.getItem("formImage");
+
+        // Display the image
+        if (formImage) {
+          submittedImage.src = formImage;
+        } else {
+          submittedImage.style.display = "none";
+        }
+
+        // Define sections and their respective keys
+        const sections = {
+          "Basic Info": [
+            "fname",
+            "gender",
+            "number",
+            "DOB",
+            "email",
+            "nationality",
+            "bloodgroup",
+            "religion",
+            "motherTongue",
+          ],
+          Address: [
+            "address",
+            "mobile",
+            "country",
+            "provience",
+            "district",
+            "district_municipality",
+          ],
+          Account: ["userName", "password"],
+          Professional: [
+            "occupation",
+            "organization",
+            "workAddress",
+            "experience",
+          ],
+          Educational: ["education", "major", "school", "graduation"],
+        };
+
+        // Display the data with headings
+        for (const [heading, keys] of Object.entries(sections)) {
+          const section = document.createElement("section");
+          const header = document.createElement("h2");
+          header.textContent = heading;
+          section.appendChild(header);
+
+          keys.forEach((key) => {
+            if (formData[key]) {
+              const p = document.createElement("p");
+              p.textContent = `${key
+                .replace(/([A-Z])/g, " $1")
+                .replace(/^./, (str) => str.toUpperCase())}: ${formData[key]}`;
+              section.appendChild(p);
+            }
+          });
+
+          dataContainer.appendChild(section);
+        }
+      });
+    </script>
+  </body>
+</html>

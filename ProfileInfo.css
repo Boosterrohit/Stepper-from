@@ -1,0 +1,67 @@
+/* Reset some default styling */
+body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling for body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d4d4d4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+p {
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 25px;
+  border-radius: 12px;
+}
+/* Styling for main container */
+main.submitted-data {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1100px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Styling for the image container */
+.image-container {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#submitted-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #9dec89;
+  object-fit: contain;
+  height: 125px;
+}
+
+/* Styling for data container */
+#data-container {
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  main.submitted-data {
+    padding: 15px;
+  }
+}
